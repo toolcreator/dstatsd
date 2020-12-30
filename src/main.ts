@@ -1,7 +1,7 @@
 import { DockerStatsRecord } from './DockerStatsRecord';
 import { dockerContainers, dockerContainerStats } from 'dockerstats';
 
-let intervalMs = 1000;
+const intervalMs = 1000;
 
 async function getStats() {
   let stats : DockerStatsRecord[] = [];
@@ -29,9 +29,9 @@ async function getStats() {
   return stats;
 }
 
-const intervalId = setInterval(
+setInterval(
   async () => {
-    const stats = await getStats();
+    await getStats();
   },
   intervalMs
 );
