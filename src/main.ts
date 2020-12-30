@@ -7,14 +7,16 @@ async function getStats() {
   let stats : DockerStatsRecord[] = [];
 
   const containers = await dockerContainers();
+
   if (containers) {
     const containerIds = containers.map(c => c.id);
     const containerIdsStr = containerIds.reduce((p, c) => p + ', ' + c);
     const containerNames = containers.map(c => c.name)
-    stats = (await dockerContainerStats(containerIdsStr)).map(s => {
+
+    stats = (await dockerContainerStats(containerIdsStr)).map((s, i) => {
       return new DockerStatsRecord(
         s.id,
-        containerNames[containerIds.findIndex(id => id == s.id)],
+        containerNames[i],
         s.cpu_percent,
         s.mem_usage,
         s.mem_limit,
@@ -26,12 +28,13 @@ async function getStats() {
       );
     });
   }
+
   return stats;
 }
 
-setInterval(
-  async () => {
-    await getStats();
-  },
-  intervalMs
-);
+async function update() {
+  const stats = await getStats();
+  console.log(stats);
+}
+
+setInterval(update, intervalMs);
