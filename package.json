@@ -1,0 +1,23 @@
+{
+  "name": "dstatsd",
+  "version": "0.0.0",
+  "description": "docker stats daemon scrapable by prometheus",
+  "main": "main.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toolcreator/dstatsd.git"
+  },
+  "keywords": [
+    "docker",
+    "stats",
+    "prometheus"
+  ],
+  "author": "Ole Lübke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toolcreator/dstatsd/issues"
+  },
+  "homepage": "https://github.com/toolcreator/dstatsd#readme"
+}
