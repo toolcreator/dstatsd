@@ -2,11 +2,8 @@
 
 import { updateStats, getStats, DockerStatsRecord } from "./stats";
 import { collectDefaultMetrics, register, Gauge } from "prom-client";
+import { options } from "yargs";
 import express from "express";
-
-// TODO get from command line
-const intervalMs = 1000;
-const port = 9101;//8080;
 
 const LABEL_NAMES = [
   "container_id",
@@ -78,11 +75,31 @@ daemon.get("/metrics", async (req, res) => {
   }
 });
 
+const argv = options({
+  interval: {
+    alias: "i",
+    default: 1000,
+    description: "The update interval in milliseconds",
+    type: "number"
+  },
+  port: {
+    alias: "p",
+    default: 8080,
+    description: "The port dstatsd is associated with",
+    type: "number"
+  }
+}).check(argv => {
+  let pass = true;
+  pass &&= !isNaN(argv.interval)
+  pass &&= !isNaN(argv.port);
+  return pass;
+}).argv
+
 try {
   collectDefaultMetrics();
-  setInterval(updateStats, intervalMs);
-  daemon.listen(port)
-  console.log(`Listening on port ${port}.`);
+  setInterval(updateStats, argv.interval);
+  daemon.listen(argv.port)
+  console.log(`Listening on port ${argv.port}.`);
   console.log("Metrics are exposed at /metrics endpoint.");
 } catch (err) {
   console.log(err);
