@@ -21,11 +21,9 @@ export class DockerStatsRecord {
 export async function updateStats(): Promise<void> {
   try {
     const containers = await dockerContainers();
-
-    if (containers) {
+    if (containers?.length > 0) {
       const containerIdsStr = containers.map(c => c.id).reduce((p, c) => p + ', ' + c);
       const containerNames = containers.map(c => c.name)
-
       dstats = (await dockerContainerStats(containerIdsStr)).map((s, i) => {
         return new DockerStatsRecord(
           s.id,
