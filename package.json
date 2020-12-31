@@ -6,11 +6,10 @@
     "dstatsd": "dist/main.js"
   },
   "scripts": {
-    "postinstall": "npm link",
     "build": "tsc",
-    "prestart": "npm run build",
-    "start": "dstatsd",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start": "dist/main.js",
+    "docker-build": "docker build --tag toolcreator/dstatsd ."
   },
   "eslintConfig": {
     "root": true,
@@ -42,7 +41,6 @@
     "dockerstats": "^1.4.3",
     "express": "^4.17.1",
     "prom-client": "^13.0.0",
-    "typescript": "^4.1.3",
     "yargs": "^16.2.0"
   },
   "devDependencies": {
@@ -51,6 +49,7 @@
     "@types/yargs": "^15.0.12",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
-    "eslint": "^7.16.0"
+    "eslint": "^7.16.0",
+    "typescript": "^4.1.3"
   }
 }
