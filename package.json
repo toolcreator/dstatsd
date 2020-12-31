@@ -2,7 +2,9 @@
   "name": "dstatsd",
   "version": "0.0.0",
   "description": "docker stats daemon scrapable by prometheus",
-  "main": "dist/main.js",
+  "bin": {
+    "dstatsd": "dist/main.js"
+  },
   "scripts": {
     "start": "tsc && node dist/main.js",
     "lint": "eslint ."

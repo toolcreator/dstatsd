@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { updateStats, getStats, DockerStatsRecord } from "./stats";
 import { collectDefaultMetrics, register, Gauge } from "prom-client";
 import express from "express";
