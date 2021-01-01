@@ -9,7 +9,7 @@
     "build": "tsc",
     "lint": "eslint .",
     "start": "dist/main.js",
-    "docker-build": "docker build --tag toolcreator/dstatsd ."
+    "push-docker": "scripts/pushDockerImage.sh"
   },
   "eslintConfig": {
     "root": true,
