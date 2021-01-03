@@ -88,11 +88,12 @@ const argv = options({
     description: "The port dstatsd is associated with",
     type: "number"
   }
-}).check(argv => {
-  let pass = true;
-  pass &&= !isNaN(argv.interval)
-  pass &&= !isNaN(argv.port);
-  return pass;
+}).strict()
+  .check(argv => {
+    let pass = true;
+    pass &&= !isNaN(argv.interval)
+    pass &&= !isNaN(argv.port);
+    return pass;
 }).argv
 
 try {
