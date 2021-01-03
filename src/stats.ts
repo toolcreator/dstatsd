@@ -33,10 +33,7 @@ export async function updateStats(): Promise<void> {
           s.mem_limit,
           s.mem_percent,
           s.netIO.rx,
-          // Workaround for bug in dockerstats: https://github.com/sebhildebrandt/dockerstats/issues/7
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          s.netIO.tx ? s.netIO.tx : 0,
+          s.netIO.wx,
           s.blockIO.r,
           s.blockIO.w
         );
