@@ -55,7 +55,7 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock:ro -p 12345:8080 toolcre
 dstatsd:
   image: toolcreator/dstatsd
   command:
-    - "--interval 10000"
+    - "--interval=10000"
   ports:
     - '12345:8080'
   volumes:
@@ -69,8 +69,8 @@ dstatsd:
   image: toolcreator/dstatsd
   network_mode: "host"
   command:
-    - "--interval 10000"
-    - "--port 12345"
+    - "--interval=10000"
+    - "--port=12345"
   volumes:
     - '/var/run/docker.sock:/var/run/docker.sock:ro'
 ```
