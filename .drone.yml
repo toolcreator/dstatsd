@@ -11,4 +11,4 @@ steps:
     settings:
       branch: main
       remote: git@github.com:toolcreator/dstatsd.git
-      ssh_key: ssh_key
+      ssh_key: ${ssh_key}
