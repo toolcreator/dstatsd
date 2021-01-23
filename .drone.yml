@@ -1,0 +1,6 @@
+- name: mirror to github
+  image: appleboy/drone-git-push
+  settings:
+    branch: main
+    remote: git@github.com:toolcreator/dstatsd.git
+    ssh_key: ssh_key
