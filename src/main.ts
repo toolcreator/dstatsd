@@ -10,6 +10,7 @@ const LABEL_NAMES = [
   "container_name"
 ];
 function defaultCollect<T extends string>(g: Gauge<T>, extractMetric: (s: DockerStatsRecord) => number) {
+  g.reset();
   for (const stat of getStats()) {
     const metric = extractMetric(stat);
     g.labels(stat.id, stat.name).set(metric /*? metric : 0*/);

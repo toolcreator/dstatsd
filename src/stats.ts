@@ -39,6 +39,8 @@ export async function updateStats(): Promise<void> {
         );
       });
       //console.log(dstats);
+    } else {
+      dstats = [];
     }
   } catch (err) {
     console.log(err);
