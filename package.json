@@ -1,6 +1,6 @@
 {
   "name": "dstatsd",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "docker stats daemon scrapable by prometheus",
   "bin": {
     "dstatsd": "dist/main.js"
